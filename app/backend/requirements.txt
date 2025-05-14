@@ -6,7 +6,7 @@ passlib[bcrypt]
 python-multipart
 python-jose[cryptography]
 bcrypt
-pydantic>=2.0.0
+pydantic[email] # Added [email] extras
 pydantic-settings
 werkzeug
 numpy
@@ -17,9 +17,8 @@ pydicom
 pylibjpeg
 pylibjpeg-libjpeg
 python-gdcm
-pydicom
-pylibjpeg
 PyWavelets
 torch
 torchvision
 timm
+email-validator # Explicitly added for clarity
