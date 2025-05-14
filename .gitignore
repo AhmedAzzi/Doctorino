@@ -1,0 +1,127 @@
+# Project structure
+# All code is now in the app/ directory
+# The following ignores apply to both the root and app/ directory
+
+# Frontend (React/Node.js) related
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# testing
+/coverage
+*.lcov
+
+# production build files
+/build
+/dist
+/out
+*.tgz
+
+# misc frontend
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.eslintcache
+.cache
+*.tsbuildinfo
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+bun.lock
+
+# Backend (Python/FastAPI) related
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+.ENV/
+
+# Environment variables
+# .env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Application specific
+# Uploaded files and media
+app/backend/uploads/ecg/record_*
+app/backend/uploads/mammography/mammo_*
+app/backend/uploads/temp/*
+/media/
+/static/
+
+# Database files
+*.sqlite3
+*.db
+
+# Logs
+logs/
+*.log
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# AI model files (often large)
+*.h5
+*.pth
+*.onnx
+*.pb
+*.tflite
+*.pt
+/models/
+
+# Temporary files
+.tmp/
+tmp/
+temp/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Backup files
+*.bak
+*.swp
+*~

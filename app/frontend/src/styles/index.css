@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased bg-gray-50 text-gray-900;
+  }
+
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-primary-700 text-white hover:bg-primary-800 focus:ring-primary-500;
+  }
+
+  .dark .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-400;
+  }
+
+  .btn-success {
+    @apply bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+  }
+
+  .card {
+    @apply bg-white rounded-md shadow p-4;
+  }
+
+  .dark .card {
+    @apply bg-gray-800 text-gray-100;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-2 px-4 py-2 rounded-md text-gray-600 hover:bg-gray-100 transition-colors;
+  }
+
+  .dark .sidebar-link {
+    @apply text-gray-300 hover:bg-gray-700 hover:text-white;
+  }
+
+  .sidebar-link.active {
+    @apply bg-primary-700 text-white hover:bg-primary-800;
+  }
+
+  .dark .sidebar-link.active {
+    @apply bg-primary-900 text-primary-200 hover:bg-primary-800;
+  }
+
+  .status-pending {
+    @apply bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .dark .status-pending {
+    @apply bg-yellow-900 text-yellow-200;
+  }
+
+  .status-completed {
+    @apply bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .dark .status-completed {
+    @apply bg-green-900 text-green-200;
+  }
+
+  .status-canceled {
+    @apply bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .dark .status-canceled {
+    @apply bg-red-900 text-red-200;
+  }
+
+}
