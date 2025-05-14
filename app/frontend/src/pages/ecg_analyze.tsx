@@ -151,9 +151,7 @@ const ECGAnalyze: React.FC = () => {
       const token = localStorage.getItem('authToken');
 
       // Make the API request
-      // In development, use relative URL for proxy; in production, use full URL
-      const apiUrl = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_URL || 'https://doctorino-api.onrender.com');
-      const response = await fetch(`${apiUrl}/api/files/upload/ecg`, {
+      const response = await fetch('http://localhost:34664/api/files/upload/ecg', {
         method: 'POST',
         headers: {
           'Authorization': token ? `Bearer ${token}` : '',
@@ -228,7 +226,7 @@ const ECGAnalyze: React.FC = () => {
     if (error instanceof Error) {
       errorMessage = error.message;
       if (error.message.includes('Failed to fetch')) {
-        errorMessage = 'Failed to connect to the server. Please ensure the API is running and accessible.';
+        errorMessage = 'Failed to connect to the server. Please ensure the API is running at http://localhost:34664';
       }
     }
 

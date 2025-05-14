@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import apiClient from '../utils/api';
 import 'leaflet/dist/leaflet.css';
 import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaBriefcase, FaEdit, FaSave, FaTimes } from 'react-icons/fa';
 
@@ -85,7 +84,11 @@ const Profile: React.FC = () => {
         console.log('Fetching user profile with token:', token);
 
         try {
-          const response = await apiClient.get<User>('/api/auth/doctors/me');
+          const response = await axios.get<User>('http://localhost:34664/api/auth/doctors/me', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
 
           console.log('User profile response:', response.data);
           // Add default values for fields that might not be in the API response
@@ -109,7 +112,11 @@ const Profile: React.FC = () => {
 
           // If we get a 307 redirect, try the URL with trailing slash
           if (apiError.response && apiError.response.status === 307) {
-            const response = await apiClient.get<User>('/api/auth/doctors/me/');
+            const response = await axios.get<User>('http://localhost:34664/api/auth/doctors/me/', {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            });
 
             console.log('User profile response (with trailing slash):', response.data);
             // Add default values for fields that might not be in the API response
@@ -188,9 +195,14 @@ const Profile: React.FC = () => {
       }
 
       // Send the update to the backend
-      const response = await apiClient.put<User>(
-        '/api/auth/doctors/me',
-        updateData
+      const response = await axios.put<User>(
+        'http://localhost:34664/api/auth/doctors/me',
+        updateData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       console.log('Profile update response:', response.data);

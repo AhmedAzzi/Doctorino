@@ -66,9 +66,7 @@ export default function Login() {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
-            // In development, use relative URL for proxy; in production, use full URL
-            const apiUrl = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_URL || 'http://localhost:34664');
-            const response = await fetch(`${apiUrl}/api/auth/token`, {
+            const response = await fetch("http://localhost:34664/api/auth/token", {
                 method: "POST",
                 body: formDataObj,
                 signal: controller.signal
@@ -92,9 +90,7 @@ export default function Login() {
 
                     // Trigger model loading in the background after navigation
                     setTimeout(() => {
-                        // In development, use relative URL for proxy; in production, use full URL
-                        const apiUrl = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_URL || 'http://localhost:34664');
-                        fetch(`${apiUrl}/api/auth/load-models`, {
+                        fetch("http://localhost:34664/api/auth/load-models", {
                             method: "GET",
                             headers: {
                                 "Authorization": `Bearer ${data.access_token}`

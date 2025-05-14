@@ -10,8 +10,8 @@ Object.assign(console, log.functions);
 
 // Environment configuration
 const isDev = process.env.NODE_ENV === 'development';
-const API_PORT = process.env.API_PORT || 443;
-const API_URL = process.env.API_URL || 'https://doctorino-api.onrender.com';
+const API_PORT = process.env.API_PORT || 34664;
+const API_URL = `http://localhost:${API_PORT}`;
 
 // Global references
 let mainWindow = null;
@@ -179,12 +179,12 @@ class MainWindow {
       mainWindow.webContents.executeJavaScript(`
         const originalWarn = console.warn;
         const originalError = console.error;
-
+        
         console.warn = function(...args) {
           if (args[0] && /Autofill\\.(enable|setAddresses)/.test(args[0])) return;
           originalWarn.apply(console, args);
         };
-
+        
         console.error = function(...args) {
           if (args[0] && /Autofill\\.(enable|setAddresses)/.test(args[0])) return;
           originalError.apply(console, args);

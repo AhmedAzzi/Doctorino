@@ -39,9 +39,7 @@ const Layout: React.FC = () => {
       const token = localStorage.getItem('authToken');
       if (token) {
         // Trigger model loading
-        // In development, use relative URL for proxy; in production, use full URL
-        const apiUrl = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_URL || 'https://doctorino-api.onrender.com');
-        fetch(`${apiUrl}/api/auth/load-models`, {
+        fetch('http://localhost:34664/api/auth/load-models', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`

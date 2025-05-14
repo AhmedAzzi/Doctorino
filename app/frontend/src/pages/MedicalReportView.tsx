@@ -289,7 +289,7 @@ const MedicalImageView: React.FC<{ report: Report }> = ({ report }) => {
       </h2>
       <div className="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg">
         <img
-          src={import.meta.env.DEV ? `/${report.relative_path}` : `${import.meta.env.VITE_API_URL || 'http://localhost:34664'}/${report.relative_path}`}
+          src={`http://localhost:34664/${report.relative_path}`}
           alt={report.description || "Medical image"}
           className="max-w-full max-h-[600px] object-contain rounded-lg shadow-md"
         />
@@ -310,7 +310,7 @@ const ScanView: React.FC<{ report: Report }> = ({ report }) => {
       </h2>
       <div className="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg">
         <img
-          src={import.meta.env.DEV ? `/${report.relative_path}` : `${import.meta.env.VITE_API_URL || 'http://localhost:34664'}/${report.relative_path}`}
+          src={`http://localhost:34664/${report.relative_path}`}
           alt={report.description || "Medical scan"}
           className="max-w-full max-h-[600px] object-contain rounded-lg shadow-md"
         />
@@ -339,7 +339,7 @@ const LabResultView: React.FC<{ report: Report }> = ({ report }) => {
       {isImage ? (
         <div className="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg">
           <img
-            src={import.meta.env.DEV ? `/${report.relative_path}` : `${import.meta.env.VITE_API_URL || 'https://doctorino-api.onrender.com'}/${report.relative_path}`}
+            src={`http://localhost:34664/${report.relative_path}`}
             alt="Lab result"
             className="max-w-full max-h-[600px] object-contain rounded-lg shadow-md"
           />
@@ -390,7 +390,7 @@ const PrescriptionView: React.FC<{ report: Report }> = ({ report }) => {
       {isImage ? (
         <div className="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg">
           <img
-            src={import.meta.env.DEV ? `/${report.relative_path}` : `${import.meta.env.VITE_API_URL || 'https://doctorino-api.onrender.com'}/${report.relative_path}`}
+            src={`http://localhost:34664/${report.relative_path}`}
             alt="Prescription"
             className="max-w-full max-h-[600px] object-contain rounded-lg shadow-md"
           />

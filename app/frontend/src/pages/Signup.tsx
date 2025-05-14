@@ -95,9 +95,7 @@ export default function Signup() {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
-            // In development, use relative URL for proxy; in production, use full URL
-            const apiUrl = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_URL || 'http://localhost:34664');
-            const response = await fetch(`${apiUrl}/api/auth/register-doctor`, {
+            const response = await fetch("http://localhost:34664/api/auth/register-doctor", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

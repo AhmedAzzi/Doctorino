@@ -155,9 +155,7 @@ const MammographyAnalyze: React.FC = () => {
                 const previewFormData = new FormData();
                 previewFormData.append('file', selectedFile);
 
-                // In development, use relative URL for proxy; in production, use full URL
-                const apiUrl = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_URL || 'https://doctorino-api.onrender.com');
-                const previewResponse = await fetch(`${apiUrl}/api/mammography/dicom_preview`, {
+                const previewResponse = await fetch('http://localhost:34664/api/mammography/dicom_preview', {
                     method: 'POST',
                     body: previewFormData,
                     headers: {
@@ -179,9 +177,7 @@ const MammographyAnalyze: React.FC = () => {
 
         try {
             // Use the correct API endpoint
-            // In development, use relative URL for proxy; in production, use full URL
-            const apiUrl = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_URL || 'https://doctorino-api.onrender.com');
-            const response = await fetch(`${apiUrl}/api/mammography/predict`, {
+            const response = await fetch('http://localhost:34664/api/mammography/predict', {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -247,9 +243,7 @@ const MammographyAnalyze: React.FC = () => {
 
         try {
             // Use the existing API endpoint for DICOM preview
-            // In development, use relative URL for proxy; in production, use full URL
-            const apiUrl = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_URL || 'https://doctorino-api.onrender.com');
-            const response = await fetch(`${apiUrl}/api/mammography/dicom_preview`, {
+            const response = await fetch('http://localhost:34664/api/mammography/dicom_preview', {
                 method: 'POST',
                 body: formData,
                 headers: {

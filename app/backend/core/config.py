@@ -47,7 +47,7 @@ class Settings(BaseModel):
 
     # CORS Settings
     cors_origins: list = Field(
-        default_factory=lambda: os.environ.get("CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://localhost:8000,https://doctorino-app.onrender.com,*").split(",")
+        default_factory=lambda: os.environ.get("CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173,http://192.168.1.8:5173,*").split(",")
     )
 
     # File Upload Settings

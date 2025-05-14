@@ -69,13 +69,12 @@ process.on('uncaughtException', (error) => {
   console.error('Uncaught Exception:', error);
 });
 
-// Define API URL and port
-const API_URL = process.env.VITE_API_URL || 'https://doctorino-api.onrender.com';
-const API_PORT = process.env.VITE_API_PORT || 443;
+// Define API port
+const API_PORT = process.env.API_PORT || 34664;
 
 // IPC handlers for communication between renderer and main process
 ipcMain.handle('get-api-url', () => {
-  return API_URL;
+  return `http://localhost:${API_PORT}`;
 });
 
 // Handle file dialogs

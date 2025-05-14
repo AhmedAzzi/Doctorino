@@ -96,9 +96,7 @@ export const logout = async (): Promise<boolean> => {
 
     if (token) {
       // Call the backend logout endpoint
-      // In development, use relative URL for proxy; in production, use full URL
-      const apiUrl = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_URL || 'https://doctorino-api.onrender.com');
-      const response = await fetch(`${apiUrl}/api/auth/logout`, {
+      const response = await fetch('http://localhost:34664/api/auth/logout', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

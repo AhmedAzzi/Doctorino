@@ -1,14 +1,8 @@
 import axios from 'axios';
 import { isTokenValid, refreshTokenIfNeeded, logout } from './authUtils';
 
-// Get the API URL from environment variables or use a default
-// This makes it easy to switch between local and cloud APIs
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:34664';
-
-// In development with Vite, we can use the proxy defined in vite.config.ts
-// In production, we use the full URL
-const isDevelopment = import.meta.env.DEV;
-const DEFAULT_API_URL = isDevelopment ? '' : API_URL;
+// Default API URL (for development)
+const DEFAULT_API_URL = 'http://localhost:34664';
 
 // Create axios instance
 const apiClient = axios.create({

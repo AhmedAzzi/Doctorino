@@ -62,13 +62,19 @@ const Settings: React.FC = () => {
         return;
       }
 
-      const response = await apiClient.get('/api/settings/', {
+      const response = await fetch('http://localhost:34664/api/settings/', {
+        method: 'GET',
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
         }
       });
 
-      const data = response.data;
+      if (!response.ok) {
+        throw new Error(`Error fetching settings: ${response.statusText}`);
+      }
+
+      const data = await response.json();
 
       // Update settings with data from API
       setSettings({
@@ -126,13 +132,18 @@ const Settings: React.FC = () => {
       }
 
       // Send settings to backend
-      const response = await apiClient.put('/api/settings/', settings, {
+      const response = await fetch('http://localhost:34664/api/settings/', {
+        method: 'PUT',
         headers: {
-          'Authorization': `Bearer ${token}`
-        }
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(settings)
       });
 
-      // Response is handled by axios
+      if (!response.ok) {
+        throw new Error(`Error saving settings: ${response.statusText}`);
+      }
 
       // Show success message
       setSuccessMessage('Settings saved successfully!');
@@ -169,14 +180,20 @@ const Settings: React.FC = () => {
       }
 
       // Reset settings on backend
-      const response = await apiClient.post('/api/settings/reset', {}, {
+      const response = await fetch('http://localhost:34664/api/settings/reset', {
+        method: 'POST',
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
         }
       });
 
+      if (!response.ok) {
+        throw new Error(`Error resetting settings: ${response.statusText}`);
+      }
+
       // Get default settings from response
-      const defaultSettings = response.data;
+      const defaultSettings = await response.json();
 
       // Update local settings
       setSettings(defaultSettings);
